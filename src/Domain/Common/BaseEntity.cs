@@ -2,6 +2,11 @@
 
 namespace Cherpumple.Domain.Common;
 
+/// <summary>
+/// Inheriting from BaseEntity means an entity will be tracked as its own entity by EF core (a table).
+/// 
+/// </summary>
+
 public abstract class BaseEntity
 {
     public int Id { get; set; }

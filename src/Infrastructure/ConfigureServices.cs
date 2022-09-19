@@ -1,5 +1,5 @@
 ﻿using Cherpumple.Application.Common.Interfaces;
-using Cherpumple.Infrastructure.Files;
+// using Cherpumple.Infrastructure.Files;
 using Cherpumple.Infrastructure.Identity;
 using Cherpumple.Infrastructure.Persistence;
 using Cherpumple.Infrastructure.Persistence.Interceptors;
@@ -25,7 +25,7 @@ public static class ConfigureServices
         else
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
                     builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
         }
 
@@ -43,7 +43,7 @@ public static class ConfigureServices
 
         services.AddTransient<IDateTime, DateTimeService>();
         services.AddTransient<IIdentityService, IdentityService>();
-        services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
+        // services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
 
         services.AddAuthentication()
             .AddIdentityServerJwt();

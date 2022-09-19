@@ -1,60 +1,65 @@
-﻿using Cherpumple.Application.Common.Models;
-using Cherpumple.Application.TodoItems.Commands.CreateTodoItem;
-using Cherpumple.Application.TodoItems.Commands.DeleteTodoItem;
-using Cherpumple.Application.TodoItems.Commands.UpdateTodoItem;
-using Cherpumple.Application.TodoItems.Commands.UpdateTodoItemDetail;
-using Cherpumple.Application.TodoItems.Queries.GetTodoItemsWithPagination;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Cherpumple.WebUI.Controllers;
-
-[Authorize]
-public class TodoItemsController : ApiControllerBase
-{
-    [HttpGet]
-    public async Task<ActionResult<PaginatedList<TodoItemBriefDto>>> GetTodoItemsWithPagination([FromQuery] GetTodoItemsWithPaginationQuery query)
-    {
-        return await Mediator.Send(query);
-    }
-
-    [HttpPost]
-    public async Task<ActionResult<int>> Create(CreateTodoItemCommand command)
-    {
-        return await Mediator.Send(command);
-    }
-
-    [HttpPut("{id}")]
-    public async Task<ActionResult> Update(int id, UpdateTodoItemCommand command)
-    {
-        if (id != command.Id)
-        {
-            return BadRequest();
-        }
-
-        await Mediator.Send(command);
-
-        return NoContent();
-    }
-
-    [HttpPut("[action]")]
-    public async Task<ActionResult> UpdateItemDetails(int id, UpdateTodoItemDetailCommand command)
-    {
-        if (id != command.Id)
-        {
-            return BadRequest();
-        }
-
-        await Mediator.Send(command);
-
-        return NoContent();
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<ActionResult> Delete(int id)
-    {
-        await Mediator.Send(new DeleteTodoItemCommand(id));
-
-        return NoContent();
-    }
-}
+﻿// using Cherpumple.Application.Common.Models;
+// using Cherpumple.Application.TodoItems.Commands.CreateTodoItem;
+// using Cherpumple.Application.TodoItems.Commands.DeleteTodoItem;
+// using Cherpumple.Application.TodoItems.Commands.UpdateTodoItem;
+// using Cherpumple.Application.TodoItems.Commands.UpdateTodoItemDetail;
+// using Cherpumple.Application.TodoItems.Queries.GetTodoItemsWithPagination;
+// using Microsoft.AspNetCore.Authorization;
+// using Microsoft.AspNetCore.Mvc;
+// using Microsoft.EntityFrameworkCore;
+//
+// namespace Cherpumple.WebUI.Controllers;
+//
+// [Authorize]
+// public class TodoItemsController : ApiControllerBase
+// {
+//     [HttpGet]
+//     public async Task<ActionResult<PaginatedList<TodoItemBriefDto>>> GetTodoItemsWithPagination([FromQuery] GetTodoItemsWithPaginationQuery query)
+//     {
+//         return await Mediator.Send(query);
+//     }
+//
+//     [HttpPost]
+//     public async Task<ActionResult<int>> Create(CreateTodoItemCommand command)
+//     {
+//         if (ModelState.IsValid)
+//         {
+//             Console.WriteLine("ModelState is invalid.");
+//         }
+//         return await Mediator.Send(command);
+//     }
+//
+//     [HttpPut("{id}")]
+//     public async Task<ActionResult> Update(int id, UpdateTodoItemCommand command)
+//     {
+//         if (id != command.Id)
+//         {
+//             return BadRequest();
+//         }
+//
+//         await Mediator.Send(command);
+//
+//         return NoContent();
+//     }
+//
+//     [HttpPut("[action]")]
+//     public async Task<ActionResult> UpdateItemDetails(int id, UpdateTodoItemDetailCommand command)
+//     {
+//         if (id != command.Id)
+//         {
+//             return BadRequest();
+//         }
+//
+//         await Mediator.Send(command);
+//
+//         return NoContent();
+//     }
+//
+//     [HttpDelete("{id}")]
+//     public async Task<ActionResult> Delete(int id)
+//     {
+//         await Mediator.Send(new DeleteTodoItemCommand(id));
+//
+//         return NoContent();
+//     }
+// }

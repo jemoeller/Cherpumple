@@ -5,9 +5,13 @@ namespace Cherpumple.Application.Common.Interfaces;
 
 public interface IApplicationDbContext
 {
-    DbSet<TodoList> TodoLists { get; }
+    DbSet<Author> Authors { get; }
 
-    DbSet<TodoItem> TodoItems { get; }
+    DbSet<Direction> Directions { get; }
+    
+    DbSet<Recipe> Recipes { get; }
+    
+    DbSet<KitchenTool> KitchenTools { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

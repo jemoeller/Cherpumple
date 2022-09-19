@@ -1,7 +1,8 @@
 ﻿using Cherpumple.Domain.Common;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace MediatR;
+namespace Cherpumple.Infrastructure.Common;
 
 public static class MediatorExtensions
 {

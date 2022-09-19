@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using Cherpumple.Application.Common.Interfaces;
 using Cherpumple.Domain.Entities;
+using Cherpumple.Domain.Enums;
+using Cherpumple.Infrastructure.Common;
 using Cherpumple.Infrastructure.Identity;
 using Cherpumple.Infrastructure.Persistence.Interceptors;
 using Duende.IdentityServer.EntityFramework.Options;
@@ -27,9 +29,17 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, 
         _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
     }
 
-    public DbSet<TodoList> TodoLists => Set<TodoList>();
+    public DbSet<Recipe> Recipes => Set<Recipe>();
 
-    public DbSet<TodoItem> TodoItems => Set<TodoItem>();
+    public DbSet<Author> Authors => Set<Author>();
+
+    public DbSet<Direction> Directions => Set<Direction>();
+
+    public DbSet<KitchenTool> KitchenTools => Set<KitchenTool>();
+
+    // public DbSet<RecipeTag> RecipeTags => Set<RecipeTag>();
+    
+    
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
