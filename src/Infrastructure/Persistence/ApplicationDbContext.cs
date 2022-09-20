@@ -36,14 +36,11 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, 
     public DbSet<Direction> Directions => Set<Direction>();
 
     public DbSet<KitchenTool> KitchenTools => Set<KitchenTool>();
-
-    // public DbSet<RecipeTag> RecipeTags => Set<RecipeTag>();
-    
     
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); // <---- applies all configuration files
 
         base.OnModelCreating(builder);
     }

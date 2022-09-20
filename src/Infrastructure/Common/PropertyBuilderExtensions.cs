@@ -10,3 +10,4 @@ public static class PropertyBuilderExtensions
         return builder.HasConversion(new EnumToNumberConverter<T, int>());
     }
 }
+

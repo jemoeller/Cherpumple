@@ -11,3 +11,10 @@ public enum MeasurementUnit
     Milliliter,
     Clove,
 }
+
+public class MeasurementUnitOptions : BaseEntity
+{
+    public string Name { get; set; }
+    
+    public MeasurementUnit MeasurementUnit { get; set; }
+}

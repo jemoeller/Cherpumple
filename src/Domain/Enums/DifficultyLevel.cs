@@ -9,3 +9,10 @@ public enum DifficultyLevel
     Hard = 2,
     VeryHard = 3
 }
+
+public class DifficultyLevelOptions : BaseEntity
+{
+    public string Name { get;set;}
+    
+    public DifficultyLevel DifficultyLevel { get; set; }
+}

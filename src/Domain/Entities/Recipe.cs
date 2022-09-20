@@ -19,7 +19,7 @@ public class Recipe : BaseAuditableEntity
     public ICollection<Direction> Directions { get; set; } = new List<Direction>();
     
     // optional collection properties
-    // public ICollection<RecipeTag> Tags { get; set; } = new List<RecipeTag>();
+    public ICollection<RecipeTagOptions> Tags { get; set; } = new List<RecipeTagOptions>();
     public ICollection<KitchenTool> Tools { get; set; } = new List<KitchenTool>();
 
     // enums

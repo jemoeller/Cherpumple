@@ -102,22 +102,22 @@ public class ApplicationDbContextInitialiser
 
             var directionsList = new List<Direction>()
             {
-                new()
+                new Direction()
                 {
                     Description = "Peberfrugt, løg, chili og bladselleri skæres/snittes i små stykker",
                     Step = 1
                 },
-                new()
+                new Direction()
                 {
                     Description = "Forårsløg snittes i tynde skiver og persillen hakkes fint. Disse skal bruges til pynt til sidst i retten.",
                     Step = 2
                 },
-                new()
+                new Direction()
                 {
                     Description = "Chorizo skæres i skiver, gerne et par milimeter tykke så der er lidt bid",
                     Step = 3
                 },
-                new ()
+                new Direction()
                 {
                     Description = "Du færdiggør retten, fjolle",
                     Step = 4
@@ -128,18 +128,11 @@ public class ApplicationDbContextInitialiser
             {
                 FirstName = "lille",
                 LastName = "Søster",
-                // Avatar = new Avatar()
-                // {
-                //     ImageUrl =
-                //         "https://hrs.dk/media/sxxdeetp/img_3021-2-2.jpg?center=0.51169590643274854,0.47619047619047616&mode=crop&width=767&height=800&rnd=132805376014870000"
-                // }
             };
 
             var kitchenTools = new KitchenTool() { Name = "Gryde" };
             
-            
-            
-            _context.Recipes.Add(new()
+            await _context.Recipes.AddAsync(new()
             {
                 Title = "Jambalaya: Sydens Biksemad",
                 DifficultyLevel = DifficultyLevel.Easy,
@@ -153,10 +146,10 @@ public class ApplicationDbContextInitialiser
                 Directions = directionsList,
                 Description = "This is a description",
                 Notes = "no notes"
-
+                
             });
 
-            await _context.SaveChangesAsync();
+            var res = await _context.SaveChangesAsync();
         }
     }
 }
