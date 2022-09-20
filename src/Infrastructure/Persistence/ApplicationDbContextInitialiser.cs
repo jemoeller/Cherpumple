@@ -79,7 +79,7 @@ public class ApplicationDbContextInitialiser
                     Name = "Hvidløg",
                     FoodGroup = FoodGroup.Spice,
                     ClarificationText = "Maa man stadig godt kalde det 'fed'?",
-                    Unit = MeasurementUnit.Clove,
+                    Unit = MeasurementUnit.Cloves,
                     Quantity = 4
                 }, 
                 new ()
@@ -136,7 +136,7 @@ public class ApplicationDbContextInitialiser
             {
                 Title = "Jambalaya: Sydens Biksemad",
                 DifficultyLevel = DifficultyLevel.Easy,
-                Category = Category.Dinner,
+                Categories = Categories.Brunch | Categories.Breakfast,
                 DurationCooking = "25 min",
                 DurationPreparation = "15 min",
                 Region = Region.American,
@@ -145,8 +145,8 @@ public class ApplicationDbContextInitialiser
                 Ingredients = ingredientsList,
                 Directions = directionsList,
                 Description = "This is a description",
-                Notes = "no notes"
-                
+                Notes = "no notes",
+                RecipeTags = RecipeTags.Economical | RecipeTags.Fancy | RecipeTags.Inspiration
             });
 
             var res = await _context.SaveChangesAsync();

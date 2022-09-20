@@ -2,6 +2,7 @@ using Cherpumple.Domain.Entities;
 using Cherpumple.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Cherpumple.Infrastructure.Common;
 
 namespace Cherpumple.Infrastructure.Persistence.Configurations;
 
@@ -23,6 +24,8 @@ public class RecipeConfiguration: IEntityTypeConfiguration<Recipe>
         builder.Property(r => r.Description).IsRequired();
         
         //CONVERSIONS
+        builder.Property(e => e.RecipeTags).HasFlagToIntConversion();
+        builder.Property(e => e.Categories).HasFlagToIntConversion();
 
         // builder.Property(r => r.Tags).HasConversion(
         //     t => t.Select(e => e.ToString()),

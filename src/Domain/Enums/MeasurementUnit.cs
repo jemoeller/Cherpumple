@@ -9,12 +9,5 @@ public enum MeasurementUnit
     Liter,
     Deciliter,
     Milliliter,
-    Clove,
-}
-
-public class MeasurementUnitOptions : BaseEntity
-{
-    public string Name { get; set; }
-    
-    public MeasurementUnit MeasurementUnit { get; set; }
+    Cloves,
 }
